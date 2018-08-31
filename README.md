@@ -36,7 +36,7 @@ ccInit(cwd, {
 
 ### index
 
-[index.js:32-116](https://github.com/imcuttle/cc-init/blob/be4896cf3fb54aa5368db086abab3fe6623e242c/index.js#L32-L116 'Source code on GitHub')
+[index.js:32-116](https://github.com/imcuttle/cc-init/blob/302844b57f6c193569070741ec3d14232d56cc9d/index.js#L32-L116 'Source code on GitHub')
 
 - **See: <https://github.com/conventional-changelog>**
 - **See: <https://github.com/marionebl/commitlint>**
@@ -48,23 +48,15 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
 - `cwd` {string} - the project's root path
 - `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** {{}}
   - `opts.changelogPresetPkgName` {string}
-    the custom changelog preset package's name should be installed (optional, default `''`)
+    the custom changelog preset package's name should be installed
+    like `@scoped/conventional-changelog-foo` (optional, default `''`)
   - `opts.changelogPreset` {string}
-    conventional-changelog's preset (optional, default `'angular'`)
+    conventional-changelog's preset
+    like `@scoped/foo` (optional, default `'angular'`)
   - `opts.registry` {string} the npm's registry (optional, default `''`)
   - `opts.commitlintPreset` {string}
     the commitlint's preset config (optional, default `'@commitlint/config-conventional'`)
   - `opts.force` {boolean} - overwrite the existed config and devDependencies in `package.json`
-
-#### Examples
-
-```javascript
-@scoped/conventional-changelog-foo
-```
-
-```javascript
-@scoped/foo
-```
 
 Returns **any**
 
