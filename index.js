@@ -10,9 +10,30 @@ const get = require('lodash.get')
 const set = require('lodash.set')
 const fs = require('fs')
 
+/**
+ * make commitlint, husky and conventional-changelog getting along harmoniously together.
+ * @public
+ * @param cwd {string} - the project's root path
+ * @param opts {{}}
+ * @param [opts.changelogPreset = 'angular'] {string}
+ *  conventional-changelog's preset
+ *  @see https://github.com/conventional-changelog
+ * @param [opts.registry = ''] {string} the npm's registry
+ * @param [opts.commitlintPreset = '@commitlint/config-conventional'] {string}
+ *  the commitlint's preset config
+ *  @see https://github.com/marionebl/commitlint
+ * @param [opts.force] {boolean} - overwrite the existed config and devDependencies in `package.json`
+ * @return {*}
+ */
 module.exports = function ccInit(
   cwd,
-  { changelogPresetPkgName = '', changelogPreset = '', registry, commitlintPreset = '', force } = {}
+  {
+    changelogPresetPkgName = '',
+    changelogPreset = 'angular',
+    registry,
+    commitlintPreset = '@commitlint/config-conventional',
+    force
+  } = {}
 ) {
   const pkgPath = nps.join(cwd, 'package.json')
   if (!fs.existsSync(pkgPath)) {
