@@ -1,6 +1,10 @@
+<a name="1.0.2"></a>
+
+## [1.0.2](https://github.com/imcuttle/cc-init/compare/v1.0.1...v1.0.2) (2018-08-31)
+
 <a name="1.0.1"></a>
 
-## 1.0.1 (2018-08-31)
+## [1.0.1](https://github.com/imcuttle/cc-init/compare/30157ad...v1.0.1) (2018-08-31)
 
 ### Bug Fixes
 
