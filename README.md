@@ -36,11 +36,7 @@ ccInit(cwd, {
 
 ### index
 
-[index.js:35-120](https://github.com/imcuttle/cc-init/blob/3244aaca01ff79c612f44b4a20c17ea809ac1f4c/index.js#L35-L120 'Source code on GitHub')
-
-- **See: <https://github.com/conventional-changelog>**
-- **See: <https://github.com/marionebl/commitlint>**
-- **See: <https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio>**
+[index.js:32-117](https://github.com/imcuttle/cc-init/blob/ffbab7aaf83215171430331eff239d4f5a366c86/index.js#L32-L117 'Source code on GitHub')
 
 make commitlint, husky and conventional-changelog getting along harmoniously together.
 
@@ -52,14 +48,14 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
     the custom changelog preset package's name should be installed
     like `@scoped/conventional-changelog-foo` (optional, default `''`)
   - `opts.changelogPreset` {string}
-    conventional-changelog's preset
+    [conventional-changelog](https://github.com/conventional-changelog)'s preset
     like `@scoped/foo` (optional, default `'angular'`)
   - `opts.registry` {string} the npm's registry (optional, default `''`)
   - `opts.commitlintPreset` {string}
-    the commitlint's preset config (optional, default `'@commitlint/config-conventional'`)
+    the [commitlint](https://github.com/marionebl/commitlint)'s preset config (optional, default `'@commitlint/config-conventional'`)
   - `opts.force` {boolean} - overwrite the existed config and devDependencies in `package.json`
   - `opts.stdio` {string}
-    the stdio of npm install process (optional, default `'inherit'`)
+    the [stdio](https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio) of npm install process (optional, default `'inherit'`)
 
 Returns **any**
 

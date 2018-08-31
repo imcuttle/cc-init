@@ -19,17 +19,14 @@ const fs = require('fs')
  *  the custom changelog preset package's name should be installed
  *  like `@scoped/conventional-changelog-foo`
  * @param [opts.changelogPreset = 'angular'] {string}
- *  conventional-changelog's preset
+ *  [conventional-changelog](https://github.com/conventional-changelog)'s preset
  *  like `@scoped/foo`
- *  @see https://github.com/conventional-changelog
  * @param [opts.registry = ''] {string} the npm's registry
  * @param [opts.commitlintPreset = '@commitlint/config-conventional'] {string}
- *  the commitlint's preset config
- *  @see https://github.com/marionebl/commitlint
+ *  the [commitlint](https://github.com/marionebl/commitlint)'s preset config
  * @param [opts.force] {boolean} - overwrite the existed config and devDependencies in `package.json`
  * @param [opts.stdio = 'inherit'] {string}
- *  the stdio of npm install process
- *  @see https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio
+ *  the [stdio](https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio) of npm install process
  * @return {*}
  */
 module.exports = function ccInit(
