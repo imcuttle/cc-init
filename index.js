@@ -17,10 +17,10 @@ const fs = require('fs')
  * @param opts {{}}
  * @param [opts.changelogPresetPkgName = ''] {string}
  *  the custom changelog preset package's name should be installed
- *  @eg @scoped/conventional-changelog-foo
+ *  @example @scoped/conventional-changelog-foo
  * @param [opts.changelogPreset = 'angular'] {string}
  *  conventional-changelog's preset
- *  @eg @scoped/foo
+ *  @example @scoped/foo
  *  @see https://github.com/conventional-changelog
  * @param [opts.registry = ''] {string} the npm's registry
  * @param [opts.commitlintPreset = '@commitlint/config-conventional'] {string}

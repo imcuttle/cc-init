@@ -36,7 +36,7 @@ ccInit(cwd, {
 
 ### index
 
-[index.js:32-116](https://github.com/imcuttle/cc-init/blob/e159a44b2053138adbd77b01da4de58c1284b337/index.js#L32-L116 'Source code on GitHub')
+[index.js:32-116](https://github.com/imcuttle/cc-init/blob/be4896cf3fb54aa5368db086abab3fe6623e242c/index.js#L32-L116 'Source code on GitHub')
 
 - **See: <https://github.com/conventional-changelog>**
 - **See: <https://github.com/marionebl/commitlint>**
@@ -55,6 +55,16 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
   - `opts.commitlintPreset` {string}
     the commitlint's preset config (optional, default `'@commitlint/config-conventional'`)
   - `opts.force` {boolean} - overwrite the existed config and devDependencies in `package.json`
+
+#### Examples
+
+```javascript
+@scoped/conventional-changelog-foo
+```
+
+```javascript
+@scoped/foo
+```
 
 Returns **any**
 
