@@ -39,11 +39,12 @@ ccInit(cwd, {
 [bin.js:25-32](https://github.com/imcuttle/cc-init/blob/01f5e00a6ebae0525ef22e9a2c5ee686328e19a9/bin.js#L25-L32 'Source code on GitHub')
 
 ```bash
+# Preset the default values
 export CHANGELOG_PRESET=@baidu/befe
 export CHANGELOG_PRESET_PKGNAME=@baidu/conventional-changelog-befe
 export NPM_REGISTRY=http://registry.npm.baidu-int.com
 export COMMITLINT_PRESET=@baidu/commitlint-config-befe
-# Preset the default values
+
 cc-init
 ```
 

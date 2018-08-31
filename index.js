@@ -106,6 +106,7 @@ module.exports = function ccInit(
   let pkgStr = stringifyPkg()
 
   uptPkg('husky.installType', 'append')
+  fs.writeFileSync(pkgPath, stringifyPkg())
 
   if (install(['@commitlint/cli', '@moyuyc/husky', commitlintPreset])) {
     commitlintPreset && uptPkg('commitlint.extends', [commitlintPreset])
