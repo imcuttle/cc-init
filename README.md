@@ -36,7 +36,7 @@ ccInit(cwd, {
 
 ### ccInit
 
-[index.js:33-118](https://github.com/imcuttle/cc-init/blob/8ba94a1098c432c3c6a81cbdaa8119de855f9c53/index.js#L33-L118 'Source code on GitHub')
+[index.js:33-118](https://github.com/imcuttle/cc-init/blob/ff62c1bf63c484a308a897f1c8c1a60c04051492/index.js#L33-L118 'Source code on GitHub')
 
 make commitlint, husky and conventional-changelog getting along harmoniously together.
 

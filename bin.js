@@ -10,6 +10,18 @@ const init = require('./index')
 const fs = require('fs')
 const argv = require('minimist')(process.argv.slice(2))
 
+/**
+ * ```bash
+ * export CHANGELOG_PRESET=@baidu/befe
+ * export CHANGELOG_PRESET_PKGNAME=@baidu/conventional-changelog-befe
+ * export NPM_REGISTRY=http://registry.npm.baidu-int.com
+ * export COMMITLINT_PRESET=@baidu/commitlint-config-befe
+ * # Preset the default values
+ * cc-init
+ * ```
+ * @public
+ * @name cli
+ */
 const opt = {
   help: !!argv.h || !!argv.help,
   changelogPreset: argv['changelog-preset'] || process.env.CHANGELOG_PRESET || 'angular',
