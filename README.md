@@ -36,7 +36,7 @@ ccInit(cwd, {
 
 ### index
 
-[index.js:28-106](https://github.com/imcuttle/cc-init/blob/9aea712f44a38436572d3f4c1741c5dcc65ce623/index.js#L28-L106 'Source code on GitHub')
+[index.js:32-116](https://github.com/imcuttle/cc-init/blob/e159a44b2053138adbd77b01da4de58c1284b337/index.js#L32-L116 'Source code on GitHub')
 
 - **See: <https://github.com/conventional-changelog>**
 - **See: <https://github.com/marionebl/commitlint>**
@@ -47,13 +47,14 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
 
 - `cwd` {string} - the project's root path
 - `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** {{}}
+  - `opts.changelogPresetPkgName` {string}
+    the custom changelog preset package's name should be installed (optional, default `''`)
   - `opts.changelogPreset` {string}
     conventional-changelog's preset (optional, default `'angular'`)
   - `opts.registry` {string} the npm's registry (optional, default `''`)
   - `opts.commitlintPreset` {string}
     the commitlint's preset config (optional, default `'@commitlint/config-conventional'`)
   - `opts.force` {boolean} - overwrite the existed config and devDependencies in `package.json`
-  - `opts.changelogPresetPkgName` (optional, default `''`)
 
 Returns **any**
 
