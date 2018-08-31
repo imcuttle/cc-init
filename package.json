@@ -1,0 +1,52 @@
+{
+  "name": "cc-init",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "set commitlint & conventional-changelog quickily",
+  "author": "imcuttle",
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "npm test && npm run doc",
+    "precommit": "pretty-quick --staged",
+    "doc": "documentation --github --markdown-toc=false readme index.js -a public -s \"API\" && git commit -am \"chore: update readme\"",
+    "version": "npm run changelog",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "bin": "./bin.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "keywords": [
+    "imcuttle",
+    "cc-init"
+  ],
+  "license": "MIT",
+  "repository": "imcuttle/cc-init",
+  "jest": {
+    "testMatch": [
+      "**/__test{s,}__/*.(spec|test).{t,j}s{x,}"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.1",
+    "@commitlint/config-conventional": "^7.1.1",
+    "@types/jest": "^23.3.1",
+    "conventional-changelog-cli": "^2.0.5",
+    "documentation": "^8.1.2",
+    "husky": "^0.14.3",
+    "jest": "^23.5.0",
+    "prettier": "^1.14.2",
+    "pretty-quick": "^1.6.0"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "minimist": "^1.2.0"
+  }
+}
