@@ -8,7 +8,36 @@
 [![NPM version](https://img.shields.io/npm/v/cc-init.svg?style=flat-square)](https://www.npmjs.com/package/cc-init)
 [![NPM Downloads](https://img.shields.io/npm/dm/cc-init.svg?style=flat-square&maxAge=43200)](https://www.npmjs.com/package/cc-init)
 
-set commitlint & conventional-changelog quickily
+Set commitlint & conventional-changelog quickly
+
+## Why?
+
+I need to write and install lots of works when I want to use [`commitlint`](https://github.com/marionebl/commitlint) with [`husky`](https://github.com/typicode/husky) and [`conventional-changelog`](https://github.com/conventional-changelog/conventional-changelog) for conventional changelog.
+
+```json
+{
+  "scripts": {
+    "version": "npm run changelog",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.1",
+    "@commitlint/config-conventional": "^7.1.1",
+    "conventional-changelog-cli": "^2.0.5",
+    "husky": "^0.14.3"
+  }
+}
+```
+
+So the package can help you setting commitlint & conventional-changelog quickly.
 
 ## Usage
 

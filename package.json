@@ -2,7 +2,7 @@
   "name": "cc-init",
   "version": "1.0.1",
   "main": "index.js",
-  "description": "set commitlint & conventional-changelog quickily",
+  "description": "set commitlint & conventional-changelog quickly",
   "author": "imcuttle",
   "scripts": {
     "test": "jest",
