@@ -36,10 +36,11 @@ ccInit(cwd, {
 
 ### index
 
-[index.js:32-116](https://github.com/imcuttle/cc-init/blob/302844b57f6c193569070741ec3d14232d56cc9d/index.js#L32-L116 'Source code on GitHub')
+[index.js:35-120](https://github.com/imcuttle/cc-init/blob/3244aaca01ff79c612f44b4a20c17ea809ac1f4c/index.js#L35-L120 'Source code on GitHub')
 
 - **See: <https://github.com/conventional-changelog>**
 - **See: <https://github.com/marionebl/commitlint>**
+- **See: <https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio>**
 
 make commitlint, husky and conventional-changelog getting along harmoniously together.
 
@@ -57,6 +58,8 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
   - `opts.commitlintPreset` {string}
     the commitlint's preset config (optional, default `'@commitlint/config-conventional'`)
   - `opts.force` {boolean} - overwrite the existed config and devDependencies in `package.json`
+  - `opts.stdio` {string}
+    the stdio of npm install process (optional, default `'inherit'`)
 
 Returns **any**
 

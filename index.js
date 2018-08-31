@@ -27,6 +27,9 @@ const fs = require('fs')
  *  the commitlint's preset config
  *  @see https://github.com/marionebl/commitlint
  * @param [opts.force] {boolean} - overwrite the existed config and devDependencies in `package.json`
+ * @param [opts.stdio = 'inherit'] {string}
+ *  the stdio of npm install process
+ *  @see https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio
  * @return {*}
  */
 module.exports = function ccInit(
@@ -36,7 +39,8 @@ module.exports = function ccInit(
     changelogPreset = 'angular',
     registry,
     commitlintPreset = '@commitlint/config-conventional',
-    force
+    force,
+    stdio = 'inherit'
   } = {}
 ) {
   const pkgPath = nps.join(cwd, 'package.json')
@@ -85,7 +89,7 @@ module.exports = function ccInit(
         .concat(packages)
         .concat(['--save-dev', registry ? `--registry=${registry}` : ''])
         .filter(Boolean),
-      { stdio: 'inherit', cwd }
+      { stdio, cwd }
     )
     pkg = JSON.parse(fs.readFileSync(pkgPath).toString())
     return rlt && rlt.status === 0
