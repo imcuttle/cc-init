@@ -27,7 +27,7 @@ const fs = require('fs')
  * @param [opts.force] {boolean} - overwrite the existed config and devDependencies in `package.json`
  * @param [opts.stdio = 'inherit'] {string}
  *  the [stdio](https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio) of npm install process
- * @return {*}
+ * @return void
  */
 module.exports = function ccInit(
   cwd,
