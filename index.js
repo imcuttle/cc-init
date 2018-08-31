@@ -12,6 +12,7 @@ const fs = require('fs')
 
 /**
  * make commitlint, husky and conventional-changelog getting along harmoniously together.
+ * @name ccInit
  * @public
  * @param cwd {string} - the project's root path
  * @param opts {{}}
