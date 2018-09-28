@@ -60,9 +60,14 @@ module.exports = function ccInit(
   }
 
   function install(packages = []) {
-    packages = packages.filter(Boolean)
+    packages = packages.filter(Boolean).map(name => {
+      if (typeof name === 'string') {
+        return { name }
+      }
+      return name
+    })
     if (!force) {
-      packages = packages.filter(packageName => {
+      packages = packages.filter(({ name: packageName, removes }) => {
         const inDevDep = !!(pkg.devDependencies && pkg.devDependencies[packageName])
         const inDep = !!(pkg.dependencies && pkg.dependencies[packageName])
         if (inDevDep) {
@@ -81,16 +86,33 @@ module.exports = function ccInit(
       return true
     }
 
-    let rlt = cp.spawnSync(
-      'npm',
-      ['install']
-        .concat(packages)
-        .concat(['--save-dev', registry ? `--registry=${registry}` : ''])
-        .filter(Boolean),
-      { stdio, cwd }
-    )
-    pkg = JSON.parse(fs.readFileSync(pkgPath).toString())
-    return rlt && rlt.status === 0
+    let removeNames = []
+    let packageNames = []
+    packages.forEach(({ name, removes }) => {
+      if (removes) {
+        removeNames = removeNames.concat(removes)
+      }
+      if (name) {
+        packageNames = packageNames.concat(name)
+      }
+    })
+
+    if (removeNames && removeNames.length) {
+      cp.spawnSync('npm', ['uninstall'].concat(removeNames).filter(Boolean), { stdio, cwd })
+    }
+
+    if (packageNames.length) {
+      let rlt = cp.spawnSync(
+        'npm',
+        ['install']
+          .concat(packageNames)
+          .concat(['--save-dev', registry ? `--registry=${registry}` : ''])
+          .filter(Boolean),
+        { stdio, cwd }
+      )
+      pkg = JSON.parse(fs.readFileSync(pkgPath).toString())
+      return rlt && rlt.status === 0
+    }
   }
 
   let pkg = JSON.parse(fs.readFileSync(pkgPath).toString())
@@ -108,7 +130,7 @@ module.exports = function ccInit(
   uptPkg('husky.installType', 'append')
   fs.writeFileSync(pkgPath, stringifyPkg())
 
-  if (install(['@commitlint/cli', '@moyuyc/husky', commitlintPreset])) {
+  if (install(['@commitlint/cli', { name: '@moyuyc/husky', removes: ['husky'] }, commitlintPreset])) {
     commitlintPreset && uptPkg('commitlint.extends', [commitlintPreset])
     uptPkg('husky.hooks.commit-msg', 'commitlint -e $HUSKY_GIT_PARAMS')
 
