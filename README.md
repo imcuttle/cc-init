@@ -12,7 +12,7 @@ Set commitlint & conventional-changelog quickly
 
 ## Why?
 
-I need to write and install lots of works when I want to use [`commitlint`](https://github.com/marionebl/commitlint) with [`husky`](https://github.com/typicode/husky) and [`conventional-changelog`](https://github.com/conventional-changelog/conventional-changelog) for conventional changelog.
+I need to write and install lots of works when I want to use [`commitlint`](https://github.com/marionebl/commitlint) with [`@moyuyc/husky`](https://github.com/imcuttle/husky) and [`conventional-changelog`](https://github.com/conventional-changelog/conventional-changelog), [commitizen](https://github.com/commitizen/cz-cli) for conventional changelog.
 
 ```json
 {
@@ -28,11 +28,16 @@ I need to write and install lots of works when I want to use [`commitlint`](http
   "commitlint": {
     "extends": ["@commitlint/config-conventional"]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/foo"
+    }
+  }
   "devDependencies": {
     "@commitlint/cli": "^7.1.1",
     "@commitlint/config-conventional": "^7.1.1",
     "conventional-changelog-cli": "^2.0.5",
-    "husky": "^0.14.3"
+    "@moyuyc/husky": "^1.1.1"
   }
 }
 ```

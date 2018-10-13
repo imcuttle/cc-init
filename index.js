@@ -9,6 +9,7 @@ const nps = require('path')
 const get = require('lodash.get')
 const set = require('lodash.set')
 const fs = require('fs')
+const detectIndent = require('detect-indent')
 
 /**
  * make commitlint, husky and conventional-changelog getting along harmoniously together.
@@ -16,6 +17,8 @@ const fs = require('fs')
  * @public
  * @param cwd {string} - the project's root path
  * @param opts {{}}
+ * @param [opts.commitizenAdaptor=null] {string|null}
+ * @param [opts.commitizenInGlobal=true] {boolean}
  * @param [opts.changelogPresetPkgName = ''] {string}
  *  the custom changelog preset package's name should be installed
  *  like `@scoped/conventional-changelog-foo`
@@ -28,24 +31,21 @@ const fs = require('fs')
  * @param [opts.force] {boolean} - overwrite the existed config and devDependencies in `package.json`
  * @param [opts.stdio = 'inherit'] {string}
  *  the [stdio](https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio) of npm install process
- * @return {void}
+ * @return {boolean}
  */
 module.exports = function ccInit(
   cwd,
   {
     changelogPresetPkgName = '',
     changelogPreset = 'angular',
+    commitizenAdaptor = null,
+    commitizenInGlobal = true,
     registry,
     commitlintPreset = '@commitlint/config-conventional',
     force,
     stdio = 'inherit'
   } = {}
 ) {
-  const pkgPath = nps.join(cwd, 'package.json')
-  if (!fs.existsSync(pkgPath)) {
-    console.error(`ERROR: "${pkgPath}" is not found.`)
-    return false
-  }
   function uptPkg(path, val) {
     let old = get(pkg, path)
     if (old && !force) {
@@ -56,7 +56,7 @@ module.exports = function ccInit(
   }
 
   function stringifyPkg() {
-    return JSON.stringify(pkg, null, 2)
+    return JSON.stringify(pkg, null, indent)
   }
 
   function install(packages = []) {
@@ -115,7 +115,15 @@ module.exports = function ccInit(
     }
   }
 
-  let pkg = JSON.parse(fs.readFileSync(pkgPath).toString())
+  const pkgPath = nps.join(cwd, 'package.json')
+  if (!fs.existsSync(pkgPath)) {
+    console.error(`ERROR: "${pkgPath}" is not found.`)
+    return false
+  }
+
+  let str = fs.readFileSync(pkgPath).toString()
+  const indent = detectIndent(str).indent
+  let pkg = JSON.parse(str)
 
   if (install(['conventional-changelog-cli', changelogPresetPkgName])) {
     uptPkg(
@@ -137,5 +145,19 @@ module.exports = function ccInit(
     pkgStr = stringifyPkg()
   }
 
-  return fs.writeFileSync(pkgPath, pkgStr)
+  if (typeof commitizenAdaptor === 'string') {
+    if (!commitizenInGlobal && install(['commitizen'])) {
+      uptPkg('scripts.commit', 'git-cz')
+    } else {
+      console.log('Hint: you should run `npm install commitizen --global`')
+    }
+
+    if (install([commitizenAdaptor])) {
+      uptPkg('config.commitizen.path', './node_modules/' + commitizenAdaptor)
+    }
+    pkgStr = stringifyPkg()
+  }
+
+  fs.writeFileSync(pkgPath, pkgStr)
+  return true
 }

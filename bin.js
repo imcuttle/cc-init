@@ -8,12 +8,19 @@
 const nps = require('path')
 const init = require('./index')
 const fs = require('fs')
-const argv = require('minimist')(process.argv.slice(2))
+
+const argv = require('minimist')(process.argv.slice(2), {
+  default: {
+    'cz-in-global': true
+  },
+  boolean: ['cz-in-global', 'force', 'f']
+})
 
 /**
  * ```bash
  * export CHANGELOG_PRESET=@baidu/befe
  * export CHANGELOG_PRESET_PKGNAME=@baidu/conventional-changelog-befe
+ * export COMMITIZEN_ADAPATOR=@baidu/cz-conventional-changelog-befe
  * export NPM_REGISTRY=http://registry.npm.baidu-int.com
  * export COMMITLINT_PRESET=@baidu/commitlint-config-befe
  * # Preset the default values
@@ -27,9 +34,14 @@ const opt = {
   changelogPreset: argv['changelog-preset'] || process.env.CHANGELOG_PRESET || 'angular',
   changelogPresetPkgName: argv['changelog-preset-pkg'] || process.env.CHANGELOG_PRESET_PKGNAME, // || '@baidu/conventional-changelog-befe',
   registry: argv['registry'] || process.env.NPM_REGISTRY, // 'http://registry.npm.baidu-int.com',
-  commitlintPreset: argv['commitlint-preset'] || process.env.COMMITLINT_PRESET || '@commitlint/config-conventional', // || '@baidu/commitlint-config-befe',
-  force: !!argv.f || !!argv.force || false
+  commitlintPreset: argv['commitlint-preset'] || process.env.COMMITLINT_PRESET,
+  commitizenAdaptor: argv['cz-adaptor'] || process.env.COMMITIZEN_ADAPATOR,
+  force: !!argv.f || !!argv.force || false,
+  commitizenInGlobal: !!argv['cz-in-global']
 }
+
+// console.log(opt)
+// process.exit()
 
 if (opt.help) {
   console.log(`
@@ -38,16 +50,21 @@ if (opt.help) {
  
    Options
    
-      --help, -h               help me
+      --help, -h               Help me
       
       --changelog-preset-pkg   conventional-changelog preset package's name (will installed)
                             
       --changelog-preset       conventional-changelog preset name
                                [Default: angular]
                                
-      --registry               npm registry
+      --registry               Npm registry
                                
-      --commitlint-preset      [Default: @commitlint/config-conventional]
+      --commitlint-preset      commitlint preset 
+                               [Default: @commitlint/config-conventional]
+      
+      --cz-adaptor             commitizen adaptor, skip install commitizen when is unset
+      
+      --no-cz-in-global        Use commitizen in *local*
       
       --force, -f              Overwrite it
  
