@@ -70,11 +70,12 @@ ccInit(cwd, {
 
 ### cli
 
-[bin.js:25-32](https://github.com/imcuttle/cc-init/blob/58a660e11b4c988b297986bc08351c0eb5cd1e57/bin.js#L25-L32 'Source code on GitHub')
+[bin.js:32-41](https://github.com/imcuttle/cc-init/blob/83d9fd3340ebcd877797997f187ef30afd3a8431/bin.js#L32-L41 'Source code on GitHub')
 
 ```bash
 export CHANGELOG_PRESET=@baidu/befe
 export CHANGELOG_PRESET_PKGNAME=@baidu/conventional-changelog-befe
+export COMMITIZEN_ADAPATOR=@baidu/cz-conventional-changelog-befe
 export NPM_REGISTRY=http://registry.npm.baidu-int.com
 export COMMITLINT_PRESET=@baidu/commitlint-config-befe
 # Preset the default values
@@ -83,7 +84,7 @@ cc-init
 
 ### ccInit
 
-[index.js:33-141](https://github.com/imcuttle/cc-init/blob/58a660e11b4c988b297986bc08351c0eb5cd1e57/index.js#L33-L141 'Source code on GitHub')
+[index.js:36-163](https://github.com/imcuttle/cc-init/blob/83d9fd3340ebcd877797997f187ef30afd3a8431/index.js#L36-L163 'Source code on GitHub')
 
 make commitlint, husky and conventional-changelog getting along harmoniously together.
 
@@ -91,6 +92,8 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
 
 - `cwd` {string} - the project's root path
 - `opts` {{}}
+  - `opts.commitizenAdaptor` {string|null} (optional, default `null`)
+  - `opts.commitizenInGlobal` {boolean} (optional, default `true`)
   - `opts.changelogPresetPkgName` {string}
     the custom changelog preset package's name should be installed
     like `@scoped/conventional-changelog-foo` (optional, default `''`)
@@ -104,7 +107,7 @@ make commitlint, husky and conventional-changelog getting along harmoniously tog
   - `opts.stdio` {string}
     the [stdio](https://nodejs.org/dist/latest-v7.x/docs/api/child_process.html#child_process_options_stdio) of npm install process (optional, default `'inherit'`)
 
-Returns **void**
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
 
 ## License
 
