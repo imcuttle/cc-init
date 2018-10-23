@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+
+## [1.1.1](https://github.com/imcuttle/cc-init/compare/v1.1.0...v1.1.1) (2018-10-23)
+
+### Bug Fixes
+
+- commitlint.extends preappend ./node_modules ([860b711](https://github.com/imcuttle/cc-init/commit/860b711))
+
 <a name="1.1.0"></a>
 
 # [1.1.0](https://github.com/imcuttle/cc-init/compare/v1.0.3...v1.1.0) (2018-10-13)
