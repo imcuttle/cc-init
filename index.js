@@ -139,7 +139,10 @@ module.exports = function ccInit(
   fs.writeFileSync(pkgPath, stringifyPkg())
 
   if (install(['@commitlint/cli', { name: '@moyuyc/husky', removes: ['husky'] }, commitlintPreset])) {
-    commitlintPreset && uptPkg('commitlint.extends', [commitlintPreset])
+    commitlintPreset &&
+      uptPkg('commitlint.extends', [
+        commitlintPreset.startsWith('@') ? commitlintPreset : './node_modules/' + commitlintPreset
+      ])
     uptPkg('husky.hooks.commit-msg', 'commitlint -e $HUSKY_GIT_PARAMS')
 
     pkgStr = stringifyPkg()
