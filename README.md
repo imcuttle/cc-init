@@ -70,7 +70,7 @@ ccInit(cwd, {
 
 ### cli
 
-[bin.js:32-41](https://github.com/imcuttle/cc-init/blob/83d9fd3340ebcd877797997f187ef30afd3a8431/bin.js#L32-L41 'Source code on GitHub')
+[bin.js:32-41](https://github.com/imcuttle/cc-init/blob/43ab0cb7f675ecd0c88ab37001752f7b93981af9/bin.js#L32-L41 'Source code on GitHub')
 
 ```bash
 export CHANGELOG_PRESET=@baidu/befe
@@ -84,7 +84,7 @@ cc-init
 
 ### ccInit
 
-[index.js:36-163](https://github.com/imcuttle/cc-init/blob/83d9fd3340ebcd877797997f187ef30afd3a8431/index.js#L36-L163 'Source code on GitHub')
+[index.js:36-166](https://github.com/imcuttle/cc-init/blob/43ab0cb7f675ecd0c88ab37001752f7b93981af9/index.js#L36-L166 'Source code on GitHub')
 
 make commitlint, husky and conventional-changelog getting along harmoniously together.
 
